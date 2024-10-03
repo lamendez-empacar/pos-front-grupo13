@@ -1,8 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 import { LoginPage } from "../auth/pages/LoginPage";
+import { SeguridadRoutes } from "../seguridad/routes/SeguridadRoutes";
 import { PublicRoute } from "./PublicRoute";
 import { PrivateRoute } from "./PrivateRoute";
-import { SystemRoutes } from "../system/routes/SystemRoutes";
 
 export const AppRouter = () => {
   return (
@@ -21,7 +21,7 @@ export const AppRouter = () => {
           path="/*"
           element={
             <PrivateRoute>
-              <SystemRoutes />
+              <SeguridadRoutes />
             </PrivateRoute>
           }
         />

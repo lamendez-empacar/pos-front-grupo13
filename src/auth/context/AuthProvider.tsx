@@ -73,7 +73,7 @@ export const AuthProvider = ({ children }: Props) => {
     rol: Rol,
     token: string,
     user: User,
-    logged: boolean,
+    logged: boolean
   ) => {
     dispatch({
       type: "[AUTH] login",

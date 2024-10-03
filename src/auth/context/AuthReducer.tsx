@@ -57,6 +57,7 @@ export const authReducer = (state: AppAuthState, action: AuthAction) => {
         persona: null,
         rol: null,
         user: null,
+        cargo: null,
         token: "",
         logged: false,
       };

@@ -15,12 +15,11 @@ import {
 } from "@mui/material";
 import { useContext, useState } from "react";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import { conexionSistema } from "../../services/api-client";
+import apiClient from "../../services/api-client";
 import { AuthContext } from "../context";
 import { Messages, StorageKeys } from "../../models/enums";
 import { BackendResponse, Modulo } from "../../interfaces/interfaces";
 import { useForm } from "react-hook-form";
-import { ErrorText } from "../../components/ErrorText";
 
 const guardarState = (
   accesos: any,
@@ -29,7 +28,7 @@ const guardarState = (
   persona: any,
   rol: any,
   user: any,
-  token: any,
+  token: any
 ) => {
   localStorage.setItem(StorageKeys.ACCESOS, JSON.stringify(accesos));
   localStorage.setItem(StorageKeys.APLICACION, JSON.stringify(aplicacion));
@@ -71,12 +70,10 @@ export const LoginPage = () => {
     try {
       setIsLoading(true);
 
-      const response = await conexionSistema.post<BackendResponse>("/login", {
+      const response = await apiClient.post<BackendResponse>("/login", {
         ...formData,
         codigo_app: import.meta.env.VITE_CODIGO_APP,
       });
-      console.log("🚀 ~ submitForm ~ response:", response)
-      // const response = await conexionSeguridad.get("/users");
 
       setIsLoading(false);
 
@@ -92,11 +89,9 @@ export const LoginPage = () => {
         return;
       }
 
-      const { accesos, aplicacion, modulos, persona, rol, token, user } =
-        data;
+      const { accesos, aplicacion, modulos, persona, rol, token, user } = data;
       const modulosOrdenados: Modulo[] = ordenarModulos(modulos);
       const open = false;
-      // debugger
       guardarState(
         accesos,
         aplicacion,
@@ -104,7 +99,7 @@ export const LoginPage = () => {
         persona,
         rol,
         user,
-        token,
+        token
       );
       login(
         accesos,
@@ -115,12 +110,12 @@ export const LoginPage = () => {
         rol,
         token,
         user,
-        true,
+        true
       );
 
       navigate("/");
     } catch (error: any) {
-      console.log(JSON.stringify(error));
+      console.log(error);
       setIsLoading(false);
       const { response } = error;
       if (response) {
@@ -194,11 +189,25 @@ export const LoginPage = () => {
                     })}
                     required
                     label="Nombre de usuario"
-                    error={!!errors.email}
+                    defaultValue="john@test.com"
+                    error={
+                      errors.email?.type === "required" ||
+                      errors.email?.type === "minLength"
+                        ? true
+                        : false
+                    }
                     sx={{ width: "100%" }}
                   />
-                  {(errors.email) && (
-                    <ErrorText text="El Nombre de usuario es obligatorio"/>
+                  {(errors.email?.type === "required" ||
+                    errors.email?.type === "minLength") && (
+                    <Typography
+                      paddingLeft={2}
+                      paddingTop={1}
+                      fontSize={12.5}
+                      color={"#F36892"}
+                    >
+                      El Nombre de usuario es obligatorio
+                    </Typography>
                   )}
 
                   <TextField
@@ -209,6 +218,7 @@ export const LoginPage = () => {
                     required
                     label="Contraseña"
                     type="password"
+                    defaultValue="12345678"
                     error={
                       errors.password?.type === "required" ||
                       errors.password?.type === "minLength"

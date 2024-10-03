@@ -12,22 +12,25 @@ export enum StorageKeys {
 
 // Los nombres de los modulos deben ir en plural
 export enum ModulosSistema {
-  // -------- SEGURIDAD --------
   ACCESOS = "accesos",
   APLICACIONES = "aplicaciones",
+  ASIGNAR_CARGOS = "asignar_cargos",
   BITACORA = "bitacora",
   CARGOS = "cargos",
+  CENTROS_COSTO = "centros_costo",
   COMPONENTES = "componentes",
   DIVISIONES = "divisiones",
-  UNIDADES_NEGOCIO = "unidades_negocio",
   EMPRESA = "empresas",
   MODULOS = "modulos",
   PERSONAS = "personas",
-  ROLES = "roles",
+  PERSONAS_CENTROS_COSTO = "personascc",
   ROL_ASIGNACION = "rol_asignacion",
+  ROLES = "roles",
+  UNIDADES_NEGOCIO = "unidades_negocio",
+  UNIDADES_ORGANIZATIVAS = "unidades-organizativas",
   USUARIOS = "users",
-
-  // -------- SISTEMA ACTUAL --------
+  PRODUCTOS = "productos",
+  VENTAS = "ventas",
 }
 
 export enum TipoAcceso {
@@ -38,15 +41,20 @@ export enum TipoAcceso {
 }
 
 export enum ApiEndpoints {
-  // -------- SEGURIDAD --------
   ACCESOS = "accesos",
+  ACTUALIZAR_CARGOS = "personas/update-cargo",
+  ACTUALIZAR_ENCARGADO_PCC = "personascc/update-encargado",
   APLICACIONES = "aplicaciones",
   APLICACIONES_CON_ROLES = "aplicaciones?habilitado=1&roles=1",
   BITACORA = "bitacoras",
+  CARGOS = "cargos",
+  CENTROS_COSTO = "centros-costo",
   COMPONENTES = "componentes",
   DIVISIONES = "divisiones",
+  ELIMINAR_ASIGNACION_PCC = "personas-centro-costos/eliminar-asignacion",
   ELIMINAR_USUARIO_ROL = "eliminar-usuario-rol",
   EMPRESAS = "empresas",
+  FILTRAR_PERSONAS = "personas/filtrar",
   HABILITAR_COMPONENTES = "componentes/habilitar",
   HABILITAR_EMPRESAS = "empresas/habilitar",
   HABILITAR_MODULOS = "modulos/habilitar",
@@ -54,23 +62,26 @@ export enum ApiEndpoints {
   HABILITAR_ROL_ASIGNACION = "rol-asignaciones/habilitar",
   HABILITAR_ROLES = "roles/habilitar",
   HABILITAR_USERS = "users/habilitar",
+  IMPORTAR_PERSONAS = "personas-upload",
   LOGIN = "aut/login",
   MODULOS = "modulos",
   MODULOS_BY_APP = "modulos/app",
   PERSONAS = "personas",
-  PERSONAS_V2 = "personas/v2",
-  FILTRAR_PERSONAS = "personas/filtrar",
-  IMPORTAR_PERSONAS = "personas-upload",
+  PERSONAS_CENTROS_COSTO = "personascc",
   ROL_ASIGNACION = "rol-asignaciones",
   ROLES = "roles",
   ROLES_ACCESOS = "roles/accesos",
   UNIDAD_NEGOCIO = "unidades-negocio",
+  UNIDADES_ORGANIZATIVAS = "unidades-organizativas",
   USERS = "users",
   USUARIO_ROL = "usuario-rol",
-  CARGOS = "cargos",
   USUARIO_ROL_BASE = "usuario-rol/set-rol-base",
+  ASIGNAR_CARGOS = "asignar-cargos",
 
-  // -------- SISTEMA ACTUAL --------
+  //-------
+  PRODUCTOS = "productos",
+  VENTAS = "ventas",
+  CLIENTES = "clientes",
 }
 
 export enum Messages {

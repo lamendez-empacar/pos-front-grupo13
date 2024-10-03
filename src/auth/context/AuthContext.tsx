@@ -32,7 +32,7 @@ export type AuthContextProps = {
     rol: Rol,
     token: string,
     user: User,
-    logged: boolean,
+    logged: boolean
   ) => void;
   logout: () => void;
   toggle: (open: boolean) => void;
